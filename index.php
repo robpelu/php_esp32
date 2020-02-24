@@ -1,5 +1,5 @@
-<? php
+<?php
 
-echo "<b1>Hola desde PHP</b1>"
+echo "<h2>PHP is Fun!</h2>";
 
 ?>

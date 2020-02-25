@@ -1,7 +1,7 @@
 <?php
 
-echo "<h1>Hola desde Robert</h1>";
-echo "<h2>algo mas para decir....</h2>";
+//echo "<h1>Hola desde Robert</h1>";
+//echo "<h2>algo mas para decir....</h2>";
 
 
     // esp32/pepito.php?nombre=Robert

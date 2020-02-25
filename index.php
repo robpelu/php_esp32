@@ -19,7 +19,7 @@ $dbconn = pg_connect("host=" . $servername . " dbname=" . $database . " user=". 
     or die('No se ha podido conectar: ' . pg_last_error());
 
 // Realizando una consulta SQL
-$query = 'SELECT * FROM \"ESPcommands\"';
+$query = 'SELECT * FROM espcommands';
 $result = pg_query($query) or die('La consulta fallo: ' . pg_last_error());
 
 // Imprimiendo los resultados en HTML

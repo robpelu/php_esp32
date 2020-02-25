@@ -19,6 +19,8 @@ $dbconn = pg_connect("host=" . $servername . " dbname=" . $database . " user=". 
     //VALUES ('T_601', 'Yojimbo', 106, '1961-06-16', 'Drama');
 
 $query = "INSERT INTO espcommands (espid, espcmd) VALUES ('" . $espid . "', '" . $cmd . "' ) " ;
+echo $query;
+
 $result = pg_query($query) or die('La consulta fallo: ' . pg_last_error());
 echo "Insert fue correcto";
 

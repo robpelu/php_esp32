@@ -23,7 +23,7 @@ $query = 'SELECT * FROM espcommands';
 $result = pg_query($query) or die('La consulta fallo: ' . pg_last_error());
 
 // Imprimiendo los resultados en HTML
-echo "<table>\n";
+/*echo "<table>\n";
 while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
     echo "\t<tr>\n";
     foreach ($line as $col_value) {
@@ -31,7 +31,12 @@ while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
     }
     echo "\t</tr>\n";
 }
-echo "</table>\n";
+echo "</table>\n";*/
+
+while($row = pg_fetch_array($result, null, PGSQL_ASSOC)) {
+         $myArray[] = $row;
+}
+echo json_encode($myArray);
 
 // Liberando el conjunto de resultados
 pg_free_result($result);

@@ -1,5 +1,5 @@
 <?php
-    // esp32/pepito.php?nombre=Robert
+    // esp32/pepito.php?nombre=Robert pepe
     
 $servername = "ec2-52-202-185-87.compute-1.amazonaws.com";
 $database = "d79gdtjvldehc6";

@@ -14,22 +14,35 @@ $password = "156c2dadd79b76cf6782243d0c90c1af4f3003ae32a1d0c12157f815517db330";
 $nombre = $_GET['nombre'];
 
 
-$mysqli = new mysqli($servername, $username, $password, $database);
-if ($mysqli->connect_errno) {
-    echo "Fallo la conexion a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-}
+// Conectando y seleccionado la base de datos  
+$dbconn = pg_connect("host=" . $servername . " dbname=" . $database . " user=". $username . " password=" . $password)
+    or die('No se ha podido conectar: ' . pg_last_error());
 
-$resultado = $mysqli->query("SELECT * FROM ESPcommands WHERE ESPid like '$nombre'");
+// Realizando una consulta SQL
+$query = 'SELECT * FROM ESPcommands';
+$result = pg_query($query) or die('La consulta fallo: ' . pg_last_error());
 
-
-    while($row = $resultado->fetch_array(MYSQL_ASSOC)) {
-            $myArray[] = $row;
+// Imprimiendo los resultados en HTML
+echo "<table>\n";
+while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
+    echo "\t<tr>\n";
+    foreach ($line as $col_value) {
+        echo "\t\t<td>$col_value</td>\n";
     }
-    echo json_encode($myArray);
+    echo "\t</tr>\n";
+}
+echo "</table>\n";
+
+// Liberando el conjunto de resultados
+pg_free_result($result);
+
+// Cerrando la conexión
+pg_close($dbconn);
+
+
+//echo json_encode($myArray);
     
 
-
-$mysqli->close();
 
 
 ?>
